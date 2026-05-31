@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Bloom E‑commerce",
+    "description": "A mindful shopping experience for handmade goods, built with a focus on smooth UX.",
+    "tech": ["React", "Node.js", "Stripe"],
+    "live_url": "https://example.com",
+    "code_url": "https://github.com/youruser/bloom",
+    "image": "/images/uploads/bloom.jpg",
+    "order": 1
+  },
+  {
+    "title": "Violet Notes",
+    "description": "A beautiful, minimal note‑taking app with markdown support and local storage.",
+    "tech": ["Vue.js", "Firebase"],
+    "live_url": "https://example.com",
+    "code_url": "https://github.com/youruser/violet-notes",
+    "image": "/images/uploads/violet-notes.jpg",
+    "order": 2
+  },
+  {
+    "title": "Plant Care Tracker",
+    "description": "Keep your leafy friends alive with watering reminders and growth journaling.",
+    "tech": ["Next.js", "Tailwind", "MongoDB"],
+    "live_url": "https://example.com",
+    "code_url": "https://github.com/youruser/plant-care",
+    "image": "/images/uploads/plant-care.jpg",
+    "order": 3
+  }
+]

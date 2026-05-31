@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main   # If your GitHub default branch is "master", change this to master
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "/"
+    create: true
+    format: "json"
+    extension: "json"
+    file: "projects.json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Tech Tags", name: "tech", widget: "list", default: ["HTML", "CSS"] }
+      - { label: "Live URL", name: "live_url", widget: "string", required: false }
+      - { label: "Code URL", name: "code_url", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Order", name: "order", widget: "number", default: 0, value_type: "int" }
