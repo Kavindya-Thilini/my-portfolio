@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ----- THEME TOGGLE -----
+
+    // ========== THEME TOGGLE ==========
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
 
-    // Check saved theme or use light as default
     const savedTheme = localStorage.getItem('theme') || 'light';
     htmlElement.setAttribute('data-theme', savedTheme);
     updateToggleIcon(savedTheme);
@@ -20,12 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateToggleIcon(theme) {
         if (!themeToggleBtn) return;
-        // Use emoji or text icon; you can change these
         themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
         themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
     }
 
-    // ----- SMOOTH SCROLLING -----
+    // ========== MOBILE NAVIGATION TOGGLE ==========
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                hamburger.textContent = '✕';
+                hamburger.setAttribute('aria-label', 'Close menu');
+            } else {
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-label', 'Menu');
+            }
+        });
+
+        // Close menu when a navigation link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-label', 'Menu');
+            });
+        });
+    }
+
+    // ========== SMOOTH SCROLLING ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -38,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ----- CONTACT FORM (AJAX to Netlify) -----
+    // ========== CONTACT FORM (AJAX to Netlify) ==========
     const form = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
     const submitBtn = document.getElementById('submit-btn');
@@ -79,4 +104,60 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========== DYNAMIC PROJECTS LOADING ==========
+    loadProjects();
 });
+
+// Load projects from projects.json
+async function loadProjects() {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    try {
+        const response = await fetch('/projects.json');
+        if (!response.ok) throw new Error('Failed to fetch projects');
+        const projects = await response.json();
+
+        // Sort by order if present
+        projects.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+        container.innerHTML = '';
+
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+
+            // Image container
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'project-img';
+            if (project.image) {
+                imgDiv.innerHTML = `<img src="${project.image}" alt="${project.title}" style="width:100%; height:100%; object-fit:cover;">`;
+            } else {
+                imgDiv.textContent = project.title;
+            }
+
+            // Info container
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'project-info';
+            infoDiv.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.description || ''}</p>
+                <div class="tech-tags">
+                    ${(project.tech || []).map(tag => `<span>${tag}</span>`).join('')}
+                </div>
+                <div class="project-links">
+                    ${project.live_url ? `<a href="${project.live_url}" target="_blank">Live Demo ↗</a>` : ''}
+                    ${project.code_url ? `<a href="${project.code_url}" target="_blank">Code ↗</a>` : ''}
+                </div>
+            `;
+
+            card.appendChild(imgDiv);
+            card.appendChild(infoDiv);
+            container.appendChild(card);
+        });
+    } catch (error) {
+        container.innerHTML = '<p style="color: var(--text-medium);">Could not load projects right now.</p>';
+        console.error('Error loading projects:', error);
+    }
+}
