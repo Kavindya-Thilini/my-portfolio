@@ -18,6 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---- MOBILE NAVIGATION TOGGLE ----
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        if (navLinks.classList.contains('active')) {
+            hamburger.textContent = '✕';
+            hamburger.setAttribute('aria-label', 'Close menu');
+        } else {
+            hamburger.textContent = '☰';
+            hamburger.setAttribute('aria-label', 'Menu');
+        }
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.textContent = '☰';
+            hamburger.setAttribute('aria-label', 'Menu');
+        });
+    });
+}
+
     function updateToggleIcon(theme) {
         if (!themeToggleBtn) return;
         themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
@@ -161,3 +186,4 @@ async function loadProjects() {
         console.error('Error loading projects:', error);
     }
 }
+});
