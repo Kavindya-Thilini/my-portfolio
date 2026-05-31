@@ -18,9 +18,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---- MOBILE NAVIGATION TOGGLE ----
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        if (navLinks.classList.contains('active')) {
+            hamburger.textContent = '✕';
+            hamburger.setAttribute('aria-label', 'Close menu');
+        } else {
+            hamburger.textContent = '☰';
+            hamburger.setAttribute('aria-label', 'Menu');
+        }
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.textContent = '☰';
+            hamburger.setAttribute('aria-label', 'Menu');
+        });
+    });
+}
+
     function updateToggleIcon(theme) {
         if (!themeToggleBtn) return;
-        // Use emoji or text icon; you can change these
         themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
         themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
     }
