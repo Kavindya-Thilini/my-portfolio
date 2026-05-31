@@ -18,38 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ---- MOBILE NAVIGATION TOGGLE ----
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        if (navLinks.classList.contains('active')) {
-            hamburger.textContent = '✕';
-            hamburger.setAttribute('aria-label', 'Close menu');
-        } else {
-            hamburger.textContent = '☰';
-            hamburger.setAttribute('aria-label', 'Menu');
-        }
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.textContent = '☰';
-            hamburger.setAttribute('aria-label', 'Menu');
-        });
-    });
-}
-
     function updateToggleIcon(theme) {
         if (!themeToggleBtn) return;
         themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
         themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
     }
 
-    // ========== MOBILE NAVIGATION TOGGLE ==========
+    // ========== MOBILE NAVIGATION ==========
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
 
@@ -65,7 +40,6 @@ if (hamburger && navLinks) {
             }
         });
 
-        // Close menu when a navigation link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -75,7 +49,7 @@ if (hamburger && navLinks) {
         });
     }
 
-    // ========== SMOOTH SCROLLING ==========
+    // ========== SMOOTH SCROLL ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -130,11 +104,10 @@ if (hamburger && navLinks) {
         });
     }
 
-    // ========== DYNAMIC PROJECTS LOADING ==========
+    // ========== DYNAMIC PROJECTS ==========
     loadProjects();
 });
 
-// Load projects from projects.json
 async function loadProjects() {
     const container = document.getElementById('projects-container');
     if (!container) return;
@@ -144,7 +117,6 @@ async function loadProjects() {
         if (!response.ok) throw new Error('Failed to fetch projects');
         const projects = await response.json();
 
-        // Sort by order if present
         projects.sort((a, b) => (a.order || 0) - (b.order || 0));
 
         container.innerHTML = '';
@@ -153,7 +125,6 @@ async function loadProjects() {
             const card = document.createElement('div');
             card.className = 'project-card';
 
-            // Image container
             const imgDiv = document.createElement('div');
             imgDiv.className = 'project-img';
             if (project.image) {
@@ -162,7 +133,6 @@ async function loadProjects() {
                 imgDiv.textContent = project.title;
             }
 
-            // Info container
             const infoDiv = document.createElement('div');
             infoDiv.className = 'project-info';
             infoDiv.innerHTML = `
@@ -186,4 +156,3 @@ async function loadProjects() {
         console.error('Error loading projects:', error);
     }
 }
-});

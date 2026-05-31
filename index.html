@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraYuna | QA Engineer</title>
+    <title>Terra Yuna | QA Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
@@ -12,9 +12,9 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo"> Terra Yuna</a>
+            <a href="#" class="logo">✨ Terra Yuna</a>
             <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="#about">About</a>
                 <a href="#projects">Work</a>
                 <a href="#skills">Skills</a>
@@ -29,12 +29,11 @@
         <section id="hero">
             <div class="container hero">
                 <div class="hero-text">
-                    <p class="greeting"> Hello, I'm</p>
+                    <p class="greeting">👋 Hello, I'm</p>
                     <h1>Terra Yuna</h1>
-                    <h1>Terra Yuna</h1>
-                    <p class="tagline">Crafting elegant digital experiences with a touch of violet magic</p>
+                    <p class="tagline">Ensuring flawless digital experiences through meticulous testing & automation</p>
                     <p style="font-size: 1.1rem; color: var(--text-medium); margin-bottom: 2rem;">
-                        A full‑stack developer & creative thinker who loves building beautiful, functional web applications.
+                        A detail‑obsessed QA Engineer who blends manual testing, automation, and a love for clean user experiences.
                     </p>
                     <a href="#contact" class="btn btn-primary">Let's Connect</a>
                     <a href="#projects" class="btn btn-outline">View My Work</a>
@@ -42,9 +41,9 @@
                 <div class="hero-image">
                     <div class="avatar">
                         <!-- Replace with your photo:
-                        <img src="your-photo.jpg" alt="Priya Sharma" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+                        <img src="your-photo.jpg" alt="Terra Yuna" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
                         -->
-                        <div class="avatar-placeholder">PS</div>
+                        <div class="avatar-placeholder">TY</div>
                     </div>
                 </div>
             </div>
@@ -55,82 +54,22 @@
             <div class="container">
                 <h2>About Me</h2>
                 <p style="font-size: 1.1rem; max-width: 700px;">
-                    I’m a passionate developer who turned my love for logic and design into a career. 
-                    With a background in computer science and a heart for user‑centered design, I bring ideas to life 
-                    using clean code, modern frameworks, and that special purple touch.
+                    I’m a QA Engineer who believes every pixel, every interaction, and every backend call deserves to work perfectly.
+                    From writing thorough test plans to building automated test suites, I make sure software is robust and delightful.
                 </p>
                 <p style="margin-top: 1rem; color: var(--text-light); max-width: 700px;">
-                    When I’m not coding, you’ll find me sketching UI concepts, sipping chai, 
-                    or exploring the latest in web tech. I believe technology should feel warm, welcoming, and inclusive.
+                    When I’m not chasing bugs, you’ll find me exploring new testing tools, contributing to open‑source, or simply sipping coffee while learning something new.
+                    I love making the invisible visible — turning chaos into clarity.
                 </p>
             </div>
         </section>
 
-        <!-- Projects -->
+        <!-- Projects (dynamic – loaded from projects.json) -->
         <section id="projects">
             <div class="container">
                 <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-img">🌸 Bloom E‑commerce</div>
-                        <div class="project-info">
-                            <h3>Bloom</h3>
-                            <p>A mindful shopping experience for handmade goods, built with a focus on smooth UX.</p>
-                            <div class="tech-tags">
-                                <span>React</span><span>Node.js</span><span>Stripe</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Live Demo ↗</a>
-                                <a href="#" target="_blank">Code ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-img">📝 Violet Notes</div>
-                        <div class="project-info">
-                            <h3>Violet Notes</h3>
-                            <p>A beautiful, minimal note‑taking app with markdown support and local storage.</p>
-                            <div class="tech-tags">
-                                <span>Vue.js</span><span>Firebase</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Live Demo ↗</a>
-                                <a href="#" target="_blank">Code ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-img">🌿 Plant Care Tracker</div>
-                        <div class="project-info">
-                            <h3>Plant Care</h3>
-                            <p>Keep your leafy friends alive with watering reminders and growth journaling.</p>
-                            <div class="tech-tags">
-                                <span>Next.js</span><span>Tailwind</span><span>MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Live Demo ↗</a>
-                                <a href="#" target="_blank">Code ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 4 -->
-                    <div class="project-card">
-                        <div class="project-img">🌿 Plant Care Tracker</div>
-                        <div class="project-info">
-                            <h3>Plant Care</h3>
-                            <p>Keep your leafy friends alive with watering reminders and growth journaling.</p>
-                            <div class="tech-tags">
-                                <span>Next.js</span><span>Tailwind</span><span>MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" target="_blank">Live Demo ↗</a>
-                                <a href="#" target="_blank">Code ↗</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="projects-grid" id="projects-container">
+                    <!-- Projects will be inserted here by JavaScript -->
                 </div>
             </div>
         </section>
@@ -176,7 +115,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell me about your idea..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message ✨</button>
                     </form>
                     <div id="form-message" style="margin-top: 1rem; display: none;"></div>
                 </div>
